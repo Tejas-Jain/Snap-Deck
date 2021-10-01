@@ -33,9 +33,15 @@ function startup() {
     console.log("An error occurred: " + err);
   });
 
-  video.addEventListener('waiting', (event) => {
-      saveToPDF()
-  });
+  video.addEventListener('suspend', savepdf);
+
+  function savepdf(){
+      console.log('Video is Waiting Mode');
+    const output=document.getElementById("output");
+    console.log(output);
+    html2pdf().from(output).set({margin: 1}).save();
+
+  }
   // video.addEventListener('canplay',(ev)=>{
   //   if (!streaming) {
   //     height = video.videoHeight / (video.videoWidth/width);
@@ -60,7 +66,6 @@ function startup() {
   }, false);
   // clearphoto();
 }
-saveToPDF()
 // Fill the photo with an indication that none has been
 // captured.
 
