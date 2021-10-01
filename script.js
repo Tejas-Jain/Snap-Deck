@@ -3,8 +3,8 @@
 // width to the value defined here, but the height will be
 // calculated based on the aspect ratio of the input stream.
 
-var width = 320;    // We will scale the photo width to this
-var height = 0;     // This will be computed based on the input stream
+// var width = 370;    // We will scale the photo width to this
+// var height = 0;     // This will be computed based on the input stream
 
 // |streaming| indicates whether or not we're currently streaming
 // video from the camera. Obviously, we start at false.
@@ -21,45 +21,46 @@ var canvas = null;
 
 function startup() {
   video = document.getElementById('video');
-  // canvas = document.getElementsByClassName('canvas')[0];
-  photo = document.getElementById('photo');
   startbutton = document.getElementById('startbutton');
 
   navigator.mediaDevices.getDisplayMedia({video: true, audio: false})
-  .then(function(stream) {
+  .then((stream)=> {
     video.srcObject = stream;
     video.play();
+    video.setAttribute('autopictureinpicture',true);
   })
-  .catch(function(err) {
+  .catch((err)=> {
     console.log("An error occurred: " + err);
   });
 
-  video.addEventListener('canplay',(ev)=>{
-    if (!streaming) {
-      height = video.videoHeight / (video.videoWidth/width);
+  video.addEventListener('waiting', (event) => {
+      saveToPDF()
+  });
+  // video.addEventListener('canplay',(ev)=>{
+  //   if (!streaming) {
+  //     height = video.videoHeight / (video.videoWidth/width);
     
-      // Firefox currently has a bug where the height can't be read from
-      // the video, so we will make assumptions if this happens.
+  //     // Firefox currently has a bug where the height can't be read from
+  //     // the video, so we will make assumptions if this happens.
     
-      if (isNaN(height)) {
-        height = width / (4/3);
-      }
-    
-      video.setAttribute('width', width);
-      video.setAttribute('height', height);
-      canvas.setAttribute('width', width);
-      canvas.setAttribute('height', height);
-      streaming = true;
-    }
-  }, false);
+  //     if (isNaN(height)) {
+  //       height = width / (4/3);
+  //     }
+  //     // video.setAttribute('width', width);
+  //     // video.setAttribute('height', height);
+  //     // canvas.setAttribute('width', width);
+  //     // canvas.setAttribute('height', height);
+  //     streaming = true;
+  //   }
+  // }, false);
 
-  startbutton.addEventListener('click', function(ev){
+  startbutton.addEventListener('click', (ev)=>{
     takepicture();
-    ev.preventDefault();
+    // ev.preventDefault();
   }, false);
   // clearphoto();
 }
-
+saveToPDF()
 // Fill the photo with an indication that none has been
 // captured.
 
@@ -82,9 +83,10 @@ function takepicture() {
   canvas = document.createElement("canvas");
   var context = canvas.getContext('2d');
   // if (width && height) {
-    canvas.width = width;
-    canvas.height = height;
-    context.drawImage(video, 0, 0, width, height);
+    canvas.width = Math.round(.9* screen.width) ;
+    canvas.height = Math.round(canvas.width/video.videoWidth*video.videoHeight);
+    console.log(canvas)
+    context.drawImage(video,0,0,canvas.width, canvas.height);
     var output=document.getElementById("output");
     output.appendChild(canvas);
     // var data = canvas.toDataURL('image/png');

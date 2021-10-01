@@ -19,3 +19,13 @@
     font-size: large;
     color: white;
 }
+#output{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+canvas{
+    padding: 3em;
+    width: 80%;
+    height: fit-content;
+}
