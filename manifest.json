@@ -1,0 +1,20 @@
+{
+    "name": "Snap-Deck",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "Extension to take ScreenShot Notes",
+    "icons": {
+        "32": "/logo/logo32.png"
+    },
+    "browser_action":{
+        
+    },
+    "background": {
+        "scripts": ["/background.js"]
+    },
+    "permissions": [
+        "activeTab",
+        "https://ajax.googleapis.com/",
+        "tabs"
+    ]
+}
