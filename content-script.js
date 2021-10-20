@@ -13,13 +13,13 @@ iframe.style.top = "0px";
 iframe.style.right = "0px";
 iframe.style.zIndex = "9000000000000000000";
 iframe.style.border = "none"; 
-iframe.src = chrome.extension.getURL("/note.html")
+iframe.src = chrome.extension.getURL("SnapDeck_Website/SideBar.html");
 
 document.body.appendChild(iframe);
 
 function toggle(){
     if(iframe.style.width == "0px"){
-        iframe.style.width="400px";
+        iframe.style.width="70px";
     }
     else{
         iframe.style.width="0px";
