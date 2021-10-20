@@ -5,7 +5,6 @@ chrome.runtime.onMessage.addListener(function(msg, sender){
 })
 console.log("Inside Content Script");
 var iframe = document.createElement('iframe'); 
-iframe.style.background = "green";
 iframe.style.height = "100%";
 iframe.style.width = "0px";
 iframe.style.position = "fixed";

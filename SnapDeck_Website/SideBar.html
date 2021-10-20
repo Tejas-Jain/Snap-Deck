@@ -4,15 +4,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<style>
+    .menuBtn{
+        width: 100%;
+        height: auto;
+    }
+    #notes{
+        width: 70px;
+        height:100px;
+        font-size: 9pt;
+        border-radius: 10%;
+        border: 2px solid rgb(5, 99, 207);
+    }
+</style>
 <body>
 
-    <div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-search"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+    <div class="w3-sidebar w3-bar-block w3-white w3-xxlarge" style="width:70px">
+        <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a>
+        <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/picture-size-svgrepo-com.svg" alt=""></a>
+        <textarea name="TextNotes" id="notes" cols="6" rows="4"></textarea>
+        <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/download-svgrepo-com.svg" alt=""></a>
+        <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/edit-table-svgrepo-com.svg" alt=""></a>
+
+        <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
         <a href="#" class="w3-bar-item w3-button"><i class="fa fa-globe"></i></a>
-        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-trash"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-trash"></i></a> -->
     </div>
 </body>
 
