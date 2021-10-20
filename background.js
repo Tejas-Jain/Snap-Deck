@@ -1,6 +1,3 @@
-browser.browserAction.onClicked.addListener((tab) => {
-  browser.tabs.executeScript(
-    tab.id,{
-    file: "/popup/content-script.js"
-  });
+chrome.browserAction.onClicked.addListener((tab)=>{
+  chrome.tabs.sendMessage(tab.id,"toggle");
 });
