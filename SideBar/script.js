@@ -39,8 +39,15 @@ pipBtn.addEventListener('click', () => {
 saveBtn = document.getElementById('saveBtn'); //Adding EventListener to Save Button
 saveBtn.addEventListener('click', savepdf);
 function savepdf() {
-  if (output)
-    html2pdf().from(output).set({ margin:0}).save();
+  if (output){
+    var opt = {
+      margin: 5,
+      pagebreak: {mode: 'avoid-all'},
+      image:     {type: 'png'},
+      jsPDF:     {orientation: 'landscape' }
+    };
+    html2pdf().from(output).set(opt).save();
+  }
   else
     console.log("Output is Empty Plz Try Capturing Something First");
 }
@@ -56,7 +63,9 @@ document.getElementById('captureBtn').addEventListener('click', (ev) => {
 function takepicture() {
   canvas = document.createElement("canvas");
   var context = canvas.getContext('2d');
-  canvas.width = Math.round(.9 * screen.width);
+  // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
+  // canvas.width = Math.round(794);  //For Portrait, Here 794 is A4 page width for 96 PPI resolution{https://www.papersizes.org/a-sizes-in-pixels.htm}
+  canvas.width = Math.round(1080); //for Landscape, Here 1123 is A4 page height for 96 ppi resolution
   canvas.height = Math.round(canvas.width / video.videoWidth * video.videoHeight);
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
   output.appendChild(canvas);
