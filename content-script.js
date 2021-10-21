@@ -12,7 +12,8 @@ iframe.style.top = "0px";
 iframe.style.right = "0px";
 iframe.style.zIndex = "9000000000000000000";
 iframe.style.border = "none"; 
-iframe.src = chrome.extension.getURL("SnapDeck_Website/SideBar.html");
+iframe.allow= "display-capture";
+iframe.src = chrome.extension.getURL("SideBar/SideBar.html");
 
 document.body.appendChild(iframe);
 

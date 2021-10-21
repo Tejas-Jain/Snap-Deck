@@ -3,14 +3,16 @@
 <title>W3.CSS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script defer src="/SideBar/dist/html2pdf.bundle.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script defer src="/SideBar/script.js"></script>
 <style>
     .menuBtn{
         width: 100%;
         height: auto;
     }
     #notes{
-        width: 70px;
+        width: 71px;
         height:100px;
         font-size: 9pt;
         border-radius: 10%;
@@ -20,10 +22,11 @@
 <body>
 
     <div class="w3-sidebar w3-bar-block w3-white w3-xxlarge" style="width:70px">
-        <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a>
-        <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/picture-size-svgrepo-com.svg" alt=""></a>
+        <a id="startBtn" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/Media-record-cropped.svg" alt=""></a>
+        <a id="captureBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a>
+        <a id="pipBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/picture-size-svgrepo-com.svg" alt=""></a>
         <textarea name="TextNotes" id="notes" cols="6" rows="4"></textarea>
-        <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/download-svgrepo-com.svg" alt=""></a>
+        <a id="saveBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/download-svgrepo-com.svg" alt=""></a>
         <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="/MenuLogos/edit-table-svgrepo-com.svg" alt=""></a>
 
         <!-- <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>

@@ -6,7 +6,16 @@
     "icons": {
         "32": "/logo/logo32.png"
     },
-    "web_accessible_resources": ["SnapDeck_Website/SideBar.html","https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css","https://www.w3schools.com/w3css/4/w3.css"],
+    "web_accessible_resources": [
+        "/SideBar/SideBar.html",
+        "/SideBar/script.js",
+        "/SideBar/dist/html2pdf.bundle.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+        "https://www.w3schools.com/w3css/4/w3.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
+        "https://www.w3schools.com/w3css/4/w3.css"
+
+    ],
     "content_scripts": [{
         "matches": [
             "https://*/*",
@@ -21,6 +30,7 @@
     },
     "permissions": [
         "activeTab",
-        "tabs"
+        "tabs",
+        "desktopCapture"
     ]
 }
