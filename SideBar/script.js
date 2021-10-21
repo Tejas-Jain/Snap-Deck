@@ -7,6 +7,7 @@ var saveBtn = null;
 var pipBtn = null;
 var mediaStream = null;
 var output = document.createElement('div');
+var textBox = document.getElementById('notes');
 
 
 //Adding Event to Start Btn
@@ -42,7 +43,6 @@ function savepdf() {
     html2pdf().from(output).set({ margin:0}).save();
   else
     console.log("Output is Empty Plz Try Capturing Something First");
-
 }
 
 
@@ -60,6 +60,10 @@ function takepicture() {
   canvas.height = Math.round(canvas.width / video.videoWidth * video.videoHeight);
   context.drawImage(video, 0, 0, canvas.width, canvas.height);
   output.appendChild(canvas);
+  var para = document.createElement('p');
+  para.innerHTML = textBox.value;
+  textBox.value = null;
+  output.appendChild(para);
 }
 
 
