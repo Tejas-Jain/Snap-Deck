@@ -30,8 +30,13 @@ pipBtn = document.getElementById('pipBtn'); //Adding Event Listener to Picture i
 pipBtn.addEventListener('click', () => {
   if (document.pictureInPictureElement)
     document.exitPictureInPicture();
-  else if (document.pictureInPictureEnabled && video)
-    video.requestPictureInPicture();
+  else if (document.pictureInPictureEnabled && video){
+    video.requestPictureInPicture()
+    .then(pictureInPictureWindow => {
+      pictureInPictureWindow.onresize = takepicture;
+    });
+    
+  }
 });
 
 

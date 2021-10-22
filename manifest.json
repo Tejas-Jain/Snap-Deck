@@ -1,10 +1,11 @@
 {
     "name": "Snap-Deck",
-    "version": "2.0.0",
+    "version": "1.0.0",
     "manifest_version": 2,
     "description": "Extension to take ScreenShot Notes",
     "icons": {
-        "32": "/logo/logo32.png"
+        "32": "/logo/logo32.png",
+        "500": "/logo/sd logo.png"
     },
     "web_accessible_resources": [
         "/SideBar/SideBar.html",
