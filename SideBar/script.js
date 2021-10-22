@@ -25,7 +25,7 @@ startBtn.addEventListener('click', () => {
 });
 
 
-//Adding Event to PiP Buttton
+//Adding Event to PiP Button
 pipBtn = document.getElementById('pipBtn'); //Adding Event Listener to Picture in Picture Button
 pipBtn.addEventListener('click', () => {
   if (document.pictureInPictureElement)
@@ -35,7 +35,6 @@ pipBtn.addEventListener('click', () => {
     .then(pictureInPictureWindow => {
       pictureInPictureWindow.onresize = takepicture;
     });
-    
   }
 });
 
@@ -63,8 +62,10 @@ document.getElementById('captureBtn').addEventListener('click', (ev) => {
   if (video)
     takepicture();
   else
-    console.log("Start Streamig First");
+    console.log("Start Streaming First");
 }, false);
+
+//Take Picture Function to take a picture at from the current displayed screen
 function takepicture() {
   canvas = document.createElement("canvas");
   var context = canvas.getContext('2d');
