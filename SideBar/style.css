@@ -36,10 +36,16 @@ header img{
     grid-area: img;
 }
 header h1{
+    color: black;
     text-decoration: underline;
     font-size: 3em;
     margin-bottom: 0;
     grid-area: h1;
+}
+header h1:hover{
+    border-radius: 20%;
+    background-color: rgb(78, 76, 76);
+    color: aqua;
 }
 header h3{
     font-size: 1.8em;
@@ -61,5 +67,6 @@ header h3{
     padding: .5em;
 }
 .menuBtn:hover{
+    cursor: pointer;
     background-color: grey;
 }

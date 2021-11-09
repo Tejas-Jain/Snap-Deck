@@ -46,6 +46,7 @@ function savepdf() {
   if (output){
     var opt = {
       margin: 5,
+      filename:  'Snap-Deck Notes.pdf',
       pagebreak: {mode: 'avoid-all'},
       image:     {type: 'png'},
       jsPDF:     {orientation: 'landscape' }
