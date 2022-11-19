@@ -46,6 +46,7 @@ function savepdf() {
   if (output){
     var opt = {
       margin: 5,
+      filename: 'VideoNotes.pdf',
       pagebreak: {mode: 'avoid-all'},
       image:      { type: 'jpeg', quality: 0.85},
       jsPDF:     {orientation: 'landscape' }
@@ -53,7 +54,7 @@ function savepdf() {
     html2pdf().from(output).set(opt).save();
   }
   else
-    console.log("Output is Empty Plz Try Capturing Something First");
+    alert("Output is Empty Plz Try Capturing Something First");
 }
 
 
