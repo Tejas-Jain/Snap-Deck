@@ -47,7 +47,7 @@ function savepdf() {
     var opt = {
       margin: 5,
       pagebreak: {mode: 'avoid-all'},
-      image:     {type: 'png'},
+      image:      { type: 'jpeg', quality: 0.85},
       jsPDF:     {orientation: 'landscape' }
     };
     html2pdf().from(output).set(opt).save();
