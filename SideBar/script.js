@@ -33,7 +33,7 @@ pipBtn.addEventListener('click', () => {
   else if (document.pictureInPictureEnabled && video){
     video.requestPictureInPicture()
     .then(pictureInPictureWindow => {
-      pictureInPictureWindow.onresize = takepicture;
+      pictureInPictureWindow.onresize = takepicture();
     });
   }
 });
@@ -41,7 +41,7 @@ pipBtn.addEventListener('click', () => {
 
 //Adding Event To Save Button
 saveBtn = document.getElementById('saveBtn'); //Adding EventListener to Save Button
-saveBtn.addEventListener('click', savepdf);
+saveBtn.addEventListener('click', savepdf, false);
 function savepdf() {
   if (output){
     var opt = {
@@ -63,11 +63,12 @@ document.getElementById('captureBtn').addEventListener('click', (ev) => {
   if (video)
     takepicture();
   else
-    console.log("Start Streaming First");
+    alert("Start Streaming First");
 }, false);
 
 //Take Picture Function to take a picture at from the current displayed screen
 function takepicture() {
+  console.log("Called Takeeee");
   canvas = document.createElement("canvas");
   var context = canvas.getContext('2d');
   // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
