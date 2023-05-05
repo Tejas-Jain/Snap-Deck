@@ -13,7 +13,7 @@ iframe.style.right = "0px";
 iframe.style.zIndex = "99999";
 iframe.style.border = "none"; 
 iframe.allow= "display-capture; fullscreen";
-iframe.src = chrome.extension.getURL("SideBar/SideBar.html");
+iframe.src = chrome.runtime.getURL("SideBar/SideBar.html");
 document.body.appendChild(iframe);
 
 function toggle(){
