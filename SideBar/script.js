@@ -33,7 +33,7 @@ pipBtn.addEventListener('click', () => {
   else if (document.pictureInPictureEnabled && video){
     video.requestPictureInPicture()
     .then(pictureInPictureWindow => {
-      pictureInPictureWindow.onresize = takepicture();
+      pictureInPictureWindow.onresize = takePicture();
     });
   }
 });
@@ -59,27 +59,32 @@ function savepdf() {
 
 
 //Adding Event to Capture Button
-document.getElementById('captureBtn').addEventListener('click', (ev) => {
-  if (video)
-    takepicture();
-  else
-    alert("Start Streaming First");
-}, false);
+document.getElementById('captureBtn').addEventListener('click', takePicture, false);
 
 //Take Picture Function to take a picture at from the current displayed screen
-function takepicture() {
-  canvas = document.createElement("canvas");
-  var context = canvas.getContext('2d');
-  // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
-  // canvas.width = Math.round(794);  //For Portrait, Here 794 is A4 page width for 96 PPI resolution{https://www.papersizes.org/a-sizes-in-pixels.htm}
-  canvas.width = Math.round(1080); //for Landscape, Here 1123 is A4 page height for 96 ppi resolution
-  canvas.height = Math.round(canvas.width / video.videoWidth * video.videoHeight);
-  context.drawImage(video, 0, 0, canvas.width, canvas.height);
-  output.appendChild(canvas);
-  var para = document.createElement('p');
-  para.innerHTML = textBox.value;
-  textBox.value = null;
-  output.appendChild(para);
+function takePicture() {
+  if(!video){
+    alert("Start Stream First");
+    return;
+  }
+  window.top.postMessage('HideBox', '*');
+  //After lot of hit and trial and hours of research of hiding the box while capturing the screen, I found that the video is lagging behind the screen capture which causes the "Hidden Body"  to remain visible even after having everything else in the Synchronous mode.
+  //So I added a delay of 400ms to capture the screen after the video has been loaded.
+  setTimeout(() => {  //To Account for Video Lag while Capturing
+    canvas = document.createElement("canvas");
+    var context = canvas.getContext('2d');
+    // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
+    // canvas.width = Math.round(794);  //For Portrait, Here 794 is A4 page width for 96 PPI resolution{https://www.papersizes.org/a-sizes-in-pixels.htm}
+    canvas.width = Math.round(1080); //for Landscape, Here 1123 is A4 page height for 96 ppi resolution
+    canvas.height = Math.round(canvas.width / video.videoWidth * video.videoHeight);
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    output.appendChild(canvas);
+    var para = document.createElement('p');
+    para.innerHTML = textBox.value;
+    textBox.value = null;
+    output.appendChild(para);
+    window.top.postMessage('ShowBox', '*');
+  }, 15);
 }
 
 
