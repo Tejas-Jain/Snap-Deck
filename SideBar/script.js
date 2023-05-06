@@ -68,7 +68,6 @@ document.getElementById('captureBtn').addEventListener('click', (ev) => {
 
 //Take Picture Function to take a picture at from the current displayed screen
 function takepicture() {
-  console.log("Called Takeeee");
   canvas = document.createElement("canvas");
   var context = canvas.getContext('2d');
   // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
@@ -84,9 +83,11 @@ function takepicture() {
 }
 
 
-function startup() {
+async function startup() {
   video = document.createElement('video');
-  navigator.mediaDevices.getDisplayMedia({ video: true, audio: false })//Getting User Screen Stream 
+  window.top.postMessage('HideBox', '*');
+  
+  await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false })//Getting User Screen Stream 
     .then((stream) => {
       mediaStream = stream;              //And Adding it to Video Element
       video.srcObject = stream;
@@ -95,4 +96,5 @@ function startup() {
     .catch((err) => {
       console.log("An error occurred: " + err);
     });
+  window.top.postMessage('ShowBox', '*');
 }

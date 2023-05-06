@@ -10,12 +10,21 @@ iframe.style.width = "0px";
 iframe.style.position = "fixed";
 iframe.style.top = "5px";
 iframe.style.right = "0px";
-iframe.style.zIndex = "99999";
+iframe.style.zIndex = "999999999999";
 iframe.style.border = "none"; 
-iframe.allow= "display-capture; fullscreen";
+iframe.allow= "display-capture;";
 iframe.src = chrome.runtime.getURL("SideBar/SideBar.html");
 document.body.appendChild(iframe);
-
+window.onmessage = function(event){
+    if (event.data == 'HideBox') {
+        iframe.style.zIndex = "-1000";
+        iframe.style.display = "none";
+    }
+    else if(event.data == 'ShowBox'){
+        iframe.style.zIndex = "999999999999";
+        iframe.style.display = "block";
+    }
+};
 function toggle(){
     if(iframe.style.width == "0px"){
         iframe.style.width="70px";
