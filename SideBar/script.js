@@ -86,8 +86,14 @@ function takepicture() {
 async function startup() {
   video = document.createElement('video');
   window.top.postMessage('HideBox', '*');
-  
-  await navigator.mediaDevices.getDisplayMedia({ video: true, audio: false })//Getting User Screen Stream 
+  const displayMediaOptions = {
+    video: true,
+    audio: false,
+    surfaceSwitching: "include",
+    selfBrowserSurface: "include",
+  }
+
+  await navigator.mediaDevices.getDisplayMedia(displayMediaOptions)//Getting User Screen Stream 
     .then((stream) => {
       mediaStream = stream;              //And Adding it to Video Element
       video.srcObject = stream;
