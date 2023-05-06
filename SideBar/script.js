@@ -33,12 +33,44 @@ pipBtn.addEventListener('click', () => {
   else if (document.pictureInPictureEnabled && video){
     video.requestPictureInPicture()
     .then(pictureInPictureWindow => {
-      pictureInPictureWindow.onresize = takePicture();
+      // pictureInPictureWindow.onresize = takePicture();
     });
   }
 });
 
+if ("mediaSession" in navigator) {
+  navigator.mediaSession.metadata = new MediaMetadata({
+    title: "Snap-Deck Notes"
+  });
 
+//Additional Options and buttons which can be set on Picture and Picture Screen
+
+  navigator.mediaSession.setActionHandler("play", () => {
+    /* Code excerpted. */
+  });
+  navigator.mediaSession.setActionHandler("pause", takePicture);
+  // navigator.mediaSession.setActionHandler("stop", () => {
+  //   /* Code excerpted. */
+  // });
+  // navigator.mediaSession.setActionHandler("seekbackward", () => {
+  //   /* Code excerpted. */
+  // });
+  // navigator.mediaSession.setActionHandler("seekforward", () => {
+  //   /* Code excerpted. */
+  // });
+  // navigator.mediaSession.setActionHandler("seekto", () => {
+  //   /* Code excerpted. */
+  // });
+  // navigator.mediaSession.setActionHandler("previoustrack", () => {
+  //   /* Code excerpted. */
+  // });
+  // navigator.mediaSession.setActionHandler("nexttrack", () => {
+  //   /* Code excerpted. */
+  // });
+  // navigator.mediaSession.setActionHandler("skipad", () => {
+  //   /* Code excerpted. */
+  // });
+}
 //Adding Event To Save Button
 saveBtn = document.getElementById('saveBtn'); //Adding EventListener to Save Button
 saveBtn.addEventListener('click', savepdf, false);
