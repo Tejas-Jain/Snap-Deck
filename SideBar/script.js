@@ -7,8 +7,9 @@ var saveBtn = null;
 var pipBtn = null;
 var mediaStream = null;
 var output = document.createElement('div');
+var output2 = document.getElementById('output2');
 var textBox = document.getElementById('notes');
-
+var count = 0;
 
 //Adding Event to Start Btn
 var startBtn = document.getElementById('startBtn');
@@ -103,6 +104,8 @@ function takePicture() {
   //After lot of hit and trial and hours of research of hiding the box while capturing the screen, I found that the video is lagging behind the screen capture which causes the "Hidden Body"  to remain visible even after having everything else in the Synchronous mode.
   //So I added a delay of 400ms to capture the screen after the video has been loaded.
   setTimeout(() => {  //To Account for Video Lag while Capturing
+
+    //Main Output Element
     canvas = document.createElement("canvas");
     var context = canvas.getContext('2d');
     // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
@@ -111,6 +114,22 @@ function takePicture() {
     canvas.height = Math.round(canvas.width / video.videoWidth * video.videoHeight);
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     output.appendChild(canvas);
+
+    //Side Bar Thumbnail Element
+    canvas2 = document.createElement("canvas");
+    var context2 = canvas2.getContext('2d');
+    canvas2.width = Math.round(60); //for Landscape, Here 1123 is A4 page height for 96 ppi resolution
+    canvas2.height = Math.round(canvas2.width / video.videoWidth * video.videoHeight);
+    context2.drawImage(video, 0, 0, canvas2.width, canvas2.height);
+    var h1 = document.createElement('h3');
+    h1.innerHTML = ++count;
+    h1.style = 'margin-bottom: 0;';
+    var extraDiv = document.createElement('div');
+    extraDiv.appendChild(h1);
+    extraDiv.style = 'display: flex; flex-direction: column; align-items: center; gap: 0; justify-content: flex-start;'
+    extraDiv.appendChild(canvas2);
+    output2.appendChild(extraDiv);
+
     var para = document.createElement('p');
     para.innerHTML = textBox.value;
     textBox.value = null;
