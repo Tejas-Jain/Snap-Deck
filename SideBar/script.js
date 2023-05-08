@@ -3,6 +3,7 @@ var video = null;
 var photo = null;
 var capture = null;
 var canvas = null;
+var canvas2 = null;
 var saveBtn = null;
 var pipBtn = null;
 var mediaStream = null;
@@ -104,9 +105,11 @@ function takePicture() {
   //After lot of hit and trial and hours of research of hiding the box while capturing the screen, I found that the video is lagging behind the screen capture which causes the "Hidden Body"  to remain visible even after having everything else in the Synchronous mode.
   //So I added a delay of 400ms to capture the screen after the video has been loaded.
   setTimeout(() => {  //To Account for Video Lag while Capturing
+    ++count;
 
     //Main Output Element
     canvas = document.createElement("canvas");
+    canvas.id = "Canvas"+count;
     var context = canvas.getContext('2d');
     // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
     // canvas.width = Math.round(794);  //For Portrait, Here 794 is A4 page width for 96 PPI resolution{https://www.papersizes.org/a-sizes-in-pixels.htm}
@@ -115,18 +118,25 @@ function takePicture() {
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
     output.appendChild(canvas);
 
-    //Side Bar Thumbnail Element
+    //Side Bar Thumbnail Canvas Element
     canvas2 = document.createElement("canvas");
     var context2 = canvas2.getContext('2d');
     canvas2.width = Math.round(60); //for Landscape, Here 1123 is A4 page height for 96 ppi resolution
     canvas2.height = Math.round(canvas2.width / video.videoWidth * video.videoHeight);
     context2.drawImage(video, 0, 0, canvas2.width, canvas2.height);
     var h1 = document.createElement('h3');
-    h1.innerHTML = ++count;
+    h1.innerHTML = count;
     h1.style = 'margin-bottom: 0;';
+    //Add Clickable Event Listener to h1
+    h1.number = count;
+    h1.addEventListener('click', removePage, false);
+    //Add pointer cursor to h1
+    h1.style.cursor = 'pointer';
+
     var extraDiv = document.createElement('div');
     extraDiv.appendChild(h1);
     extraDiv.style = 'display: flex; flex-direction: column; align-items: center; gap: 0; justify-content: flex-start;'
+    extraDiv.id = "Canvas"+count;
     extraDiv.appendChild(canvas2);
     output2.appendChild(extraDiv);
 
@@ -138,6 +148,12 @@ function takePicture() {
   }, 15);
 }
 
+function removePage(e) {
+  var page = output.querySelector('#Canvas' + e.target.number); 
+  page.parentNode.removeChild(page);
+  page = document.getElementById('Canvas' + e.target.number);
+  page.parentNode.removeChild(page);
+}
 
 async function startup() {
   video = document.createElement('video');
