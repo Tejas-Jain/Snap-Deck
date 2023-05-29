@@ -24,6 +24,9 @@ window.onmessage = function(event){
         iframe.style.zIndex = "999999999999";
         iframe.style.display = "block";
     }
+    else if(event.data == 'exitFullScreen'){
+        document.exitFullscreen();
+    }
 };
 function toggle(){
     if(iframe.style.width == "0px"){

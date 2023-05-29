@@ -14,8 +14,12 @@ var count = 0;
 //Adding Event to Start Btn
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', () => {
-  if (!video.srcObject)
-    startup();
+  if (!video.srcObject){
+    window.top.postMessage('exitFullScreen', '*');
+    setTimeout(() => {
+      startup();
+    }, 500);
+  }
   else {    
     if (video.srcObject) {
       video.srcObject.getTracks().forEach((track) => {
@@ -107,7 +111,10 @@ document.getElementById('captureBtn').addEventListener('click', takePicture, fal
 //Take Picture Function to take a picture at from the current displayed screen
 function takePicture() {
   if(!video.srcObject){
-    alert(" Select the screen using \"Red Button\" ");
+    alert("First select the screen");
+    setTimeout(() => {
+      startup();
+    }, 1000);
     return;
   }
   window.top.postMessage('HideBox', '*');
@@ -154,7 +161,7 @@ function takePicture() {
     textBox.value = null;
     output.appendChild(para);
     window.top.postMessage('ShowBox', '*');
-  }, 15);
+  }, 25);
 }
 
 function removePage(e) {
