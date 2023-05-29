@@ -38,6 +38,10 @@ pipBtn.addEventListener('click', () => {
   if (document.pictureInPictureElement)
     document.exitPictureInPicture();
   else if (document.pictureInPictureEnabled && video){
+    if(!video.srcObject){
+      alert(" Select the screen using \"Red Button\" ");
+      return;
+    }
     video.requestPictureInPicture()
     .then(pictureInPictureWindow => {
       // pictureInPictureWindow.onresize = takePicture();
@@ -82,7 +86,7 @@ if ("mediaSession" in navigator) {
 saveBtn = document.getElementById('saveBtn'); //Adding EventListener to Save Button
 saveBtn.addEventListener('click', savepdf, false);
 function savepdf() {
-  if (output){
+  if (canvas){
     var opt = {
       margin: 5,
       filename: 'VideoNotes.pdf',
@@ -93,7 +97,7 @@ function savepdf() {
     html2pdf().from(output).set(opt).save();
   }
   else
-    alert("Output is Empty Plz Try Capturing Something First");
+    alert("Nothing to save. Please Try Capturing Something!!!");
 }
 
 
@@ -102,8 +106,8 @@ document.getElementById('captureBtn').addEventListener('click', takePicture, fal
 
 //Take Picture Function to take a picture at from the current displayed screen
 function takePicture() {
-  if(!video){
-    alert("Start Stream First");
+  if(!video.srcObject){
+    alert(" Select the screen using \"Red Button\" ");
     return;
   }
   window.top.postMessage('HideBox', '*');
