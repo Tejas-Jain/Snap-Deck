@@ -122,7 +122,6 @@ function takePicture() {
   //So I added a delay of 400ms to capture the screen after the video has been loaded.
   setTimeout(() => {  //To Account for Video Lag while Capturing
     ++count;
-
     //Main Output Element
     canvas = document.createElement("canvas");
     canvas.id = "Canvas"+count;
@@ -161,7 +160,7 @@ function takePicture() {
     textBox.value = null;
     output.appendChild(para);
     window.top.postMessage('ShowBox', '*');
-  }, 25);
+  }, 500);
 }
 
 function removePage(e) {
