@@ -21,19 +21,21 @@ startBtn.addEventListener('click', () => {
     }, 500);
   }
   else {    
-    if (video.srcObject) {
-      video.srcObject.getTracks().forEach((track) => {
-          track.stop(); // Stop the track associated with the screen sharing stream
-        }
-      );
-    }
-
-    video.srcObject = null;
-
-    if (document.pictureInPictureElement)
-      document.exitPictureInPicture();
+    stopCapture();
   }
 });
+
+function stopCapture(){
+  if (video.srcObject) {
+    video.srcObject.getTracks().forEach((track) => {
+        track.stop(); // Stop the track associated with the screen sharing stream
+      }
+    );
+  }
+  video.srcObject = null;
+  if (document.pictureInPictureElement)
+    document.exitPictureInPicture();
+}
 
 
 //Adding Event to PiP Button
@@ -114,9 +116,11 @@ function takePicture() {
     alert("First select the screen");
     setTimeout(() => {
       startup();
-    }, 1000);
+    }, 500);
     return;
   }
+  console.log(video);
+  console.log(video.srcObject);
   window.top.postMessage('HideBox', '*');
   //After lot of hit and trial and hours of research of hiding the box while capturing the screen, I found that the video is lagging behind the screen capture which causes the "Hidden Body"  to remain visible even after having everything else in the Synchronous mode.
   //So I added a delay of 400ms to capture the screen after the video has been loaded.
@@ -182,6 +186,7 @@ async function startup() {
   await navigator.mediaDevices.getDisplayMedia(displayMediaOptions)//Getting User Screen Stream 
     .then((stream) => {
       video.srcObject = stream;
+      video.srcObject.oninactive = () => stopCapture();
       video.play();
     })
     .catch((err) => {
