@@ -16,8 +16,16 @@ var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', () => {
   if (!video.srcObject)
     startup();
-  else {
+  else {    
+    if (video.srcObject) {
+      video.srcObject.getTracks().forEach((track) => {
+          track.stop(); // Stop the track associated with the screen sharing stream
+        }
+      );
+    }
+
     video.srcObject = null;
+
     if (document.pictureInPictureElement)
       document.exitPictureInPicture();
   }
