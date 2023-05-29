@@ -1,12 +1,11 @@
 var streaming = false;
-var video = null;
+var video = document.createElement('video');
 var photo = null;
 var capture = null;
 var canvas = null;
 var canvas2 = null;
 var saveBtn = null;
 var pipBtn = null;
-var mediaStream = null;
 var output = document.createElement('div');
 var output2 = document.getElementById('output2');
 var textBox = document.getElementById('notes');
@@ -15,12 +14,10 @@ var count = 0;
 //Adding Event to Start Btn
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', () => {
-  if (!mediaStream)
+  if (!video.srcObject)
     startup();
   else {
-    mediaStream.getTracks()[0].stop();
     video.srcObject = null;
-    mediaStream = null;
     if (document.pictureInPictureElement)
       document.exitPictureInPicture();
   }
@@ -156,7 +153,6 @@ function removePage(e) {
 }
 
 async function startup() {
-  video = document.createElement('video');
   window.top.postMessage('HideBox', '*');
   const displayMediaOptions = {
     video: true,
@@ -167,7 +163,6 @@ async function startup() {
 
   await navigator.mediaDevices.getDisplayMedia(displayMediaOptions)//Getting User Screen Stream 
     .then((stream) => {
-      mediaStream = stream;              //And Adding it to Video Element
       video.srcObject = stream;
       video.play();
     })
