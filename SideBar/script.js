@@ -119,13 +119,11 @@ function takePicture() {
     }, 500);
     return;
   }
-  console.log(video);
-  console.log(video.srcObject);
   window.top.postMessage('HideBox', '*');
   //After lot of hit and trial and hours of research of hiding the box while capturing the screen, I found that the video is lagging behind the screen capture which causes the "Hidden Body"  to remain visible even after having everything else in the Synchronous mode.
   //So I added a delay of 400ms to capture the screen after the video has been loaded.
   setTimeout(() => {  //To Account for Video Lag while Capturing
-    ++count;
+    ++count;  //For Numbering the Captures
     //Main Output Element
     canvas = document.createElement("canvas");
     canvas.id = "Canvas"+count;
@@ -143,18 +141,32 @@ function takePicture() {
     canvas2.width = Math.round(60); //for Landscape, Here 1123 is A4 page height for 96 ppi resolution
     canvas2.height = Math.round(canvas2.width / video.videoWidth * video.videoHeight);
     context2.drawImage(video, 0, 0, canvas2.width, canvas2.height);
+
     var h1 = document.createElement('h3');
-    h1.innerHTML = count;
-    h1.style = 'margin-bottom: 0;';
+        h1.innerHTML = count; //Adding Numbering to h1
+        var cross = document.createElement('span');
+            cross.style = 'color: red; font-size: 1.8rem; font-weight: bold; cursor: pointer;';
+            cross.innerHTML = '&cross;';
+        h1.appendChild(cross); //Adding Cross to h1
+    h1.style = `
+      margin-bottom: 0; 
+      padding-bottom: 0; 
+      border-bottom: 0;
+      user-select: none;
+    `;
     //Add Clickable Event Listener to h1
-    h1.number = count;
-    h1.addEventListener('click', removePage, false);
-    //Add pointer cursor to h1
-    h1.style.cursor = 'pointer';
+    cross.addEventListener('click', removePage, false);
+    cross.id = count;
 
     var extraDiv = document.createElement('div');
     extraDiv.appendChild(h1);
-    extraDiv.style = 'display: flex; flex-direction: column; align-items: center; gap: 0; justify-content: flex-start;'
+    extraDiv.style = `
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 0; 
+      justify-content: flex-start;
+    `;
     extraDiv.id = "Canvas"+count;
     extraDiv.appendChild(canvas2);
     output2.appendChild(extraDiv);
@@ -168,9 +180,12 @@ function takePicture() {
 }
 
 function removePage(e) {
-  var page = output.querySelector('#Canvas' + e.target.number); 
+  const id = e.currentTarget.id;
+  var page = output.querySelector('#Canvas' + id); 
+  console.log(id);
+  console.log(e.currentTarget);
   page.parentNode.removeChild(page);
-  page = document.getElementById('Canvas' + e.target.number);
+  page = document.getElementById('Canvas' + id);
   page.parentNode.removeChild(page);
 }
 
