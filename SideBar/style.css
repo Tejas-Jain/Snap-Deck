@@ -31,3 +31,18 @@
 #output2 > canvas{
     border: 1px solid grey;
 }
+#helpBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    width: 30%;
+    height: 20px;
+}
+#helpImg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
