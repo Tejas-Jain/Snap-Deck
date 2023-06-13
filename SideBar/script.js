@@ -10,6 +10,19 @@ var output = document.createElement('div');
 var output2 = document.getElementById('output2');
 var textBox = document.getElementById('notes');
 var count = 0;
+var saved = false;
+
+//Prompt for accident reload of screen
+window.addEventListener("beforeunload", function(event) {
+  // Call the save function when the event is triggered
+  if(saved || !output2.hasChildNodes()) return;
+
+  this.alert("Snap-Desk might have unsaved data, please save it before leaving the page.");
+  // Cancel the default browser behavior to show a confirmation dialog
+  event.preventDefault();
+  // Modern browsers require the `returnValue` property to be set
+  event.returnValue = '';
+});
 
 //Adding Event to Start Btn
 var startBtn = document.getElementById('startBtn');
@@ -57,7 +70,7 @@ pipBtn.addEventListener('click', () => {
 
 if ("mediaSession" in navigator) {
   navigator.mediaSession.metadata = new MediaMetadata({
-    title: "Snap-Deck Notes"
+    title: "Snap-Desk Notes"
   });
 
 //Additional Options and buttons which can be set on Picture and Picture Screen
@@ -92,7 +105,7 @@ if ("mediaSession" in navigator) {
 saveBtn = document.getElementById('saveBtn'); //Adding EventListener to Save Button
 saveBtn.addEventListener('click', savepdf, false);
 function savepdf() {
-  if (canvas){
+  if (output2.hasChildNodes()){
     var opt = {
       margin: 5,
       filename: 'VideoNotes.pdf',
@@ -101,6 +114,7 @@ function savepdf() {
       jsPDF:     {orientation: 'landscape' }
     };
     html2pdf().from(output).set(opt).save();
+    saved = true;
   }
   else
     alert("Nothing to save. Please Try Capturing Something!!!");
@@ -125,15 +139,26 @@ function takePicture() {
   setTimeout(() => {  //To Account for Video Lag while Capturing
     ++count;  //For Numbering the Captures
     //Main Output Element
+    var wrapper = document.createElement('div');
+    wrapper.id = "Canvas"+count;
+
     canvas = document.createElement("canvas");
-    canvas.id = "Canvas"+count;
     var context = canvas.getContext('2d');
     // canvas.width = Math.round(.9 * screen.width);  //From Screen Size
     // canvas.width = Math.round(794);  //For Portrait, Here 794 is A4 page width for 96 PPI resolution{https://www.papersizes.org/a-sizes-in-pixels.htm}
     canvas.width = Math.round(1080); //for Landscape, Here 1123 is A4 page height for 96 ppi resolution
     canvas.height = Math.round(canvas.width / video.videoWidth * video.videoHeight);
     context.drawImage(video, 0, 0, canvas.width, canvas.height);
-    output.appendChild(canvas);
+    wrapper.appendChild(canvas);
+
+
+    var para = document.createElement('p');
+    para.innerHTML = textBox.value;
+    wrapper.appendChild(para);
+    textBox.value = null;
+
+    output.appendChild(wrapper);
+
 
     //Side Bar Thumbnail Canvas Element
     canvas2 = document.createElement("canvas");
@@ -171,10 +196,7 @@ function takePicture() {
     extraDiv.appendChild(canvas2);
     output2.appendChild(extraDiv);
 
-    var para = document.createElement('p');
-    para.innerHTML = textBox.value;
-    textBox.value = null;
-    output.appendChild(para);
+
     window.top.postMessage('ShowBox', '*');
   }, 500);
 }
@@ -182,10 +204,11 @@ function takePicture() {
 function removePage(e) {
   const id = e.currentTarget.id;
   var page = output.querySelector('#Canvas' + id); 
-  console.log(id);
+  console.log(page.parentNode);
   console.log(e.currentTarget);
   page.parentNode.removeChild(page);
   page = document.getElementById('Canvas' + id);
+  console.log(page.parentNode);
   page.parentNode.removeChild(page);
 }
 
