@@ -9,18 +9,10 @@
     },
     "web_accessible_resources": [
         {
-          "resources": [            
-            "/SideBar/SideBar.html",
-            "/SideBar/script.js",
-            "/SideBar/dist/html2pdf.bundle.min.js",
-            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-            "https://www.w3schools.com/w3css/4/w3.css",
-            "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css",
-            "https://www.w3schools.com/w3css/4/w3.css"
-            ],
+          "resources": [ "/SideBar/SideBar.html" ],
           "matches": ["*://*/*"]
         }
-      ],
+    ],
     "content_scripts": [{
         "matches": [
             "https://*/*",
