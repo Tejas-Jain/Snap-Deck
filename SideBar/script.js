@@ -16,12 +16,12 @@ var saved = false;
 window.addEventListener("beforeunload", function(event) {
   // Call the save function when the event is triggered
   if(saved || !output2.hasChildNodes()) return;
-
-  this.alert("Snap-Desk might have unsaved data, please save it before leaving the page.");
+  
   // Cancel the default browser behavior to show a confirmation dialog
   event.preventDefault();
+
   // Modern browsers require the `returnValue` property to be set
-  event.returnValue = '';
+  return (event.returnValue = "");
 });
 
 //Adding Event to Start Btn
@@ -75,10 +75,11 @@ if ("mediaSession" in navigator) {
 
 //Additional Options and buttons which can be set on Picture and Picture Screen
 
-  navigator.mediaSession.setActionHandler("play", () => {
+  navigator.mediaSession.setActionHandler("play", (e) => {
     /* Code excerpted. */
+    takePicture();
   });
-  navigator.mediaSession.setActionHandler("pause", takePicture);
+  navigator.mediaSession.setActionHandler("pause", (e)=>{takePicture();});
   // navigator.mediaSession.setActionHandler("stop", () => {
   //   /* Code excerpted. */
   // });
