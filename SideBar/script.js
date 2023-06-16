@@ -12,6 +12,10 @@ var textBox = document.getElementById('notes');
 var count = 0;
 var saved = false;
 
+video.addEventListener('pause', ()=>{
+  video.play();
+});
+
 //Prompt for accident reload of screen
 window.addEventListener("beforeunload", function(event) {
   // Call the save function when the event is triggered
