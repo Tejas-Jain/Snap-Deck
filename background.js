@@ -2,7 +2,6 @@ chrome.action.onClicked.addListener(async ()=>{
   try{
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
     const response = await chrome.tabs.sendMessage(tab.id, "toggle");
-    console.log(response);
   }
   catch(err){
     // console.error(err);

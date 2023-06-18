@@ -12,9 +12,9 @@ var textBox = document.getElementById('notes');
 var count = 0;
 var saved = false;
 
-video.addEventListener('pause', ()=>{
-  video.play();
-});
+// video.addEventListener('pause', ()=>{
+//   video.play();
+// });
 
 //Prompt for accident reload of screen
 window.addEventListener("beforeunload", function(event) {
@@ -84,28 +84,8 @@ if ("mediaSession" in navigator) {
     takePicture();
   });
   navigator.mediaSession.setActionHandler("pause", (e)=>{takePicture();});
-  // navigator.mediaSession.setActionHandler("stop", () => {
-  //   /* Code excerpted. */
-  // });
-  // navigator.mediaSession.setActionHandler("seekbackward", () => {
-  //   /* Code excerpted. */
-  // });
-  // navigator.mediaSession.setActionHandler("seekforward", () => {
-  //   /* Code excerpted. */
-  // });
-  // navigator.mediaSession.setActionHandler("seekto", () => {
-  //   /* Code excerpted. */
-  // });
-  // navigator.mediaSession.setActionHandler("previoustrack", () => {
-  //   /* Code excerpted. */
-  // });
-  // navigator.mediaSession.setActionHandler("nexttrack", () => {
-  //   /* Code excerpted. */
-  // });
-  // navigator.mediaSession.setActionHandler("skipad", () => {
-  //   /* Code excerpted. */
-  // });
 }
+
 //Adding Event To Save Button
 saveBtn = document.getElementById('saveBtn'); //Adding EventListener to Save Button
 saveBtn.addEventListener('click', savepdf, false);
@@ -209,11 +189,8 @@ function takePicture() {
 function removePage(e) {
   const id = e.currentTarget.id;
   var page = output.querySelector('#Canvas' + id); 
-  console.log(page.parentNode);
-  console.log(e.currentTarget);
   page.parentNode.removeChild(page);
   page = document.getElementById('Canvas' + id);
-  console.log(page.parentNode);
   page.parentNode.removeChild(page);
 }
 

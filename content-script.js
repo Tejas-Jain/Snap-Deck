@@ -3,7 +3,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender){
         toggle();
     }
 })
-console.log("Inside Content Script");
+// console.log("Inside Content Script");  For checking the basic working of extension and background script
 var iframe = document.createElement('iframe'); 
 iframe.style.minWidth = 0;
 iframe.style.height = "100%";
