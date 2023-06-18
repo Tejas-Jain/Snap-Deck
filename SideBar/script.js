@@ -138,7 +138,7 @@ function takePicture() {
     }, 500);
     return;
   }
-  window.top.postMessage('HideBox', '*');
+  window.top.postMessage('HideSnapdeskExtensioBox', '*');
   //After lot of hit and trial and hours of research of hiding the box while capturing the screen, I found that the video is lagging behind the screen capture which causes the "Hidden Body"  to remain visible even after having everything else in the Synchronous mode.
   //So I added a delay of 400ms to capture the screen after the video has been loaded.
   setTimeout(() => {  //To Account for Video Lag while Capturing
@@ -202,7 +202,7 @@ function takePicture() {
     output2.appendChild(extraDiv);
 
 
-    window.top.postMessage('ShowBox', '*');
+    window.top.postMessage('ShowSnapdeskExtensionBox', '*');
   }, 500);
 }
 
@@ -218,7 +218,7 @@ function removePage(e) {
 }
 
 async function startup() {
-  window.top.postMessage('HideBox', '*');
+  window.top.postMessage('HideSnapdeskExtensioBox', '*');
   const displayMediaOptions = {
     video: true,
     audio: false,
@@ -235,5 +235,5 @@ async function startup() {
     .catch((err) => {
       console.log("An error occurred: " + err);
     });
-  window.top.postMessage('ShowBox', '*');
+  window.top.postMessage('ShowSnapdeskExtensionBox', '*');
 }
