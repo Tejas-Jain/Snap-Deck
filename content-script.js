@@ -28,6 +28,11 @@ window.onmessage = function(event){
     else if(event.data == 'exitFullScreen' && document.fullscreenElement){
         document.exitFullscreen();
     }
+    else if(event.data == 'Play_Root_Video'){
+        console.log("Received Message Play_Root_Video Message Listener");
+        var vidElement = document.querySelector("video");
+        vidElement.play();
+    }
 };
 function toggle(){
     if(iframe.style.width == "0px"){

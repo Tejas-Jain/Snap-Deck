@@ -2,7 +2,7 @@
     "name": "Snap-Desk: Capture ScreenShots as PDF Notes",
     "version": "1.0.0.0",
     "manifest_version": 3,
-    "description": "A powerful extension to capture screenshots of any desktop window or browser tab, add text notes, and save them as PDF files.",
+    "description": "A powerful extension to capture screenshots of any desktop window or browser tab, Add text notes, and Save them as PDF files.",
     "icons": {
         "128": "/logo/logo128.png"
     },
@@ -23,8 +23,5 @@
     },
     "background": {
         "service_worker": "/background.js"
-    },
-    "permissions": [
-        "desktopCapture"
-    ]
+    }
 }

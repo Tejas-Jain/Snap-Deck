@@ -12,9 +12,13 @@ var textBox = document.getElementById('notes');
 var count = 0;
 var saved = false;
 
-// video.addEventListener('pause', ()=>{
-//   video.play();
-// });
+video.addEventListener('pause', ()=>{
+  if(document.pictureInPictureElement)
+    takePicture();
+  video.play();
+  window.top.postMessage('Play_Root_Video', '*');
+  console.log("Posted a Message to Play Root Video");
+});
 
 //Prompt for accident reload of screen
 window.addEventListener("beforeunload", function(event) {
@@ -81,7 +85,7 @@ if ("mediaSession" in navigator) {
 
   navigator.mediaSession.setActionHandler("play", (e) => {
     /* Code excerpted. */
-    takePicture();
+    // takePicture();
   });
   navigator.mediaSession.setActionHandler("pause", (e)=>{takePicture();});
 }
