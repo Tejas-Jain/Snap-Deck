@@ -22,35 +22,38 @@
         </h3>
     </header>
     <div class="container">
-
-        <table class="content-table">
-            <tr>
-                <td><a id="startBtn" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/Media-record-cropped.svg" alt=""></a></td>
-                <td>Press To Start/Stop Monitoring the Screen.</td>
-            </tr>
-            <tr>
-                <td><a id="captureBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a></td>
-                <td>Press To Capture Screen.</td>
-            </tr>
-            <tr>
-                <td><textarea name="TextNotes" id="notes" cols="6" rows="4"></textarea></a></td>
-                <td>Type Notes for the Current Screen.</td>
-            </tr>
-            <tr>
-                <td rowspan="2"><a id="pipBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/picture-size-svgrepo-com.svg" alt=""></a></td>
-                <td>Press To View Screen in Picture-In-Picture(Small Screen) Mode.</td>
-            </tr>
-            <tr>
-                <td>
-                    Click <strong>Pause Button</strong> in Picture in Picture Screen(Small Screen) To Capture the Screen.
-                </td>
-            </tr>
-            <tr>
-                <td><a id="saveBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/download-svgrepo-com.svg" alt=""></a></td>
-                <td>Press to Download and Save the Cuptured Screens.</td>
-            </tr>
-        </table>
+        <div class="table-container">
+            <h2>Button Description</h2>
+            <table class="content-table">
+                <tr>
+                    <td id="startBtn"><a class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/Media-record-cropped.svg" alt=""></a></td>
+                    <td>Press To Start/Stop Monitoring the Screen.</td>
+                </tr>
+                <tr>
+                    <td id="captureBtn"><a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a></td>
+                    <td>Press To Capture Screen.</td>
+                </tr>
+                <tr>
+                    <td><textarea id="notes" name="TextNotes" cols="6" rows="4"></textarea></a></td>
+                    <td>Type Notes for the Current Screen.</td>
+                </tr>
+                <tr>
+                    <td rowspan="2" id="pipBtn"><a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/picture-size-svgrepo-com.svg" alt=""></a></td>
+                    <td>Press To View Screen in Picture-In-Picture(Small Screen) Mode.</td>
+                </tr>
+                <tr>
+                    <td>
+                        Click <strong>Pause Button</strong> in Picture in Picture Screen(Small Screen) To Capture the Screen.
+                    </td>
+                </tr>
+                <tr>
+                    <td id="saveBtn"><a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/download-svgrepo-com.svg" alt=""></a></td>
+                    <td>Press to Download and Save the Cuptured Screens.</td>
+                </tr>
+            </table>
+        </div>
         <div class="image-container">
+            <h2>Setup Steps</h2>
             <img id='frame1' src="./Images/Tutorial/Frame 1.jpg" alt="Instruction 1" style="width: 460px">
             <img id='frame2' src="./Images/Tutorial/Frame 2.jpg" alt="Instruction 2" style="height: 250px">
             <img id='frame3' src="./Images/Tutorial/Frame 3.jpg" alt="Instruction 3" style="width: 460px">
@@ -64,10 +67,16 @@
         const driverObj = driver({
         showProgress: true,
         steps: [
-            { element: '#frame1', popover: { title: 'Title', description: 'Description' } },
-            { element: '#frame2', popover: { title: 'Title', description: 'Description' } },
-            { element: '#frame3', popover: { title: 'Title', description: 'Description' } },
-            { element: '#frame4', popover: { title: 'Title', description: 'Description' } },
+            { element: '#frame1', popover: { title: 'Step: 1', description: 'Click to open All Extension Box' } },
+            { element: '#frame2', popover: { title: 'Step: 2', description: 'Click to pin the Snap-Desk Extension' } },
+            { element: '#frame3', popover: { title: 'Step: 3', description: 'Click to Un-Hide Snap-Desk Toolbar' } },
+            { element: '#frame4', popover: { title: 'Step: 4', description: 'Click again to Hide/Un-Hide as per need.' } },
+            // { element: '.content-table', popover: { title: 'Step: 4', description: 'Click again to Hide/Un-Hide as per need.' } },
+            { element: '#startBtn', popover: { title: 'Start Button', description: 'Click to select the screen/tab.' } },
+            { element: '#captureBtn', popover: { title: 'Capture Button', description: 'Click to Capture the selected screen.' } },
+            { element: '#notes', popover: { title: 'Notes Box(Optional)', description: 'Type-in additional notes about selected screen.' } },
+            { element: '#pipBtn', popover: { title: 'PIP Mode(Optional)', description: 'Click to view selected screen in small window.' } },
+            { element: '#saveBtn', popover: { title: 'Save Button', description: 'Click to download your captured screens as pdf.' } },
         ]
         });
     
