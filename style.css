@@ -57,11 +57,15 @@ header h3{
     font-style: italic;
 }
 .content-table{
-    height: 70%;
+    flex: 2;
+    margin-left: 50px;
+    height: 100%;
     border: 2px solid black;
     padding: 0;
     display: flex;
     font-size: 1.2em;
+    position: sticky;
+    top:100px;
     /* border-collapse: collapse; */
 }
 .content-table td{
@@ -73,3 +77,16 @@ header h3{
     cursor: pointer;
     background-color: grey;
 }
+.container {
+    display: flex;
+}
+.image-container {
+    flex:1;
+    margin-left: 40px; /* Add space between images and table container */
+    margin-right: 50px;
+  }
+.image-container img {
+    max-width: 100%; /* Ensure the images fit within the container */
+    margin-bottom: 50px; 
+    height: auto; /* Let the height adjust proportionally */
+  }
