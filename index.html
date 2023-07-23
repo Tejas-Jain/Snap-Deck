@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>Snap-Desk Demo Page</title>
+<title>Snap-Desk Help Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="./logo/logo128.png">
 <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
@@ -21,6 +21,7 @@
             <span style="color: rgb(1, 92, 92)" >Just</span> ScreenShot It!!!
         </h3>
     </header>
+    <span class="install-note"><b>Note: </b>Please reload the tabs or restart the browser after first install of extension.</span>
     <div class="container">
         <div class="table-container">
             <h2>Button Description</h2>
@@ -30,7 +31,7 @@
                     <td>Press To Start/Stop Monitoring the Screen.</td>
                 </tr>
                 <tr>
-                    <td id="captureBtn"><a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a></td>
+                    <td id="captureBtn"><a class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a></td>
                     <td>Press To Capture Screen.</td>
                 </tr>
                 <tr>
@@ -38,7 +39,7 @@
                     <td>Type Notes for the Current Screen.</td>
                 </tr>
                 <tr>
-                    <td rowspan="2" id="pipBtn"><a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/picture-size-svgrepo-com.svg" alt=""></a></td>
+                    <td rowspan="2" id="pipBtn"><a class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/picture-size-svgrepo-com.svg" alt=""></a></td>
                     <td>Press To View Screen in Picture-In-Picture(Small Screen) Mode.</td>
                 </tr>
                 <tr>
@@ -47,7 +48,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td id="saveBtn"><a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/download-svgrepo-com.svg" alt=""></a></td>
+                    <td id="saveBtn"><a class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/download-svgrepo-com.svg" alt=""></a></td>
                     <td>Press to Download and Save the Cuptured Screens.</td>
                 </tr>
             </table>
@@ -71,6 +72,7 @@
             { element: '#frame2', popover: { title: 'Step: 2', description: 'Click to pin the Snap-Desk Extension' } },
             { element: '#frame3', popover: { title: 'Step: 3', description: 'Click to Un-Hide Snap-Desk Toolbar' } },
             { element: '#frame4', popover: { title: 'Step: 4', description: 'Click again to Hide/Un-Hide as per need.' } },
+            { element: '.install-note', popover: { title: 'Step: 5' } },
             // { element: '.content-table', popover: { title: 'Step: 4', description: 'Click again to Hide/Un-Hide as per need.' } },
             { element: '#startBtn', popover: { title: 'Start Button', description: 'Click to select the screen/tab.' } },
             { element: '#captureBtn', popover: { title: 'Capture Button', description: 'Click to Capture the selected screen.' } },
@@ -79,7 +81,7 @@
             { element: '#saveBtn', popover: { title: 'Save Button', description: 'Click to download your captured screens as pdf.' } },
         ]
         });
-    
+        
         driverObj.drive();
         //   driver.start(); 
     </script>
