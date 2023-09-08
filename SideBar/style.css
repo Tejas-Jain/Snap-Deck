@@ -1,9 +1,9 @@
 .w3-sidebar{
     overflow: hidden;
-    height:min-content;
+    height: min-content;
 }
 .menuBtn{
-    width: 100%;
+    width: 2.5rem;
     height: auto;
 }
 #notes{
