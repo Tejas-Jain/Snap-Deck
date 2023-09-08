@@ -3,26 +3,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* height: inherit; */
     height: 100%;
-    overflow:scroll;
-}
-#output{
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.menuBtn{
-    width: 2.5em;
-    height: auto;
-}
-#notes{
-    /* width:95%;
-    height:100%; */
-    font-size: 9pt;
-    border-radius: 10%;
-    border: 2px solid rgb(5, 99, 207);
+    overflow: scroll;
 }
 header{
     font-family: Century;
@@ -66,10 +48,6 @@ header h3{
     /* border-radius: 10%; */
     border: 2px solid black;
     /* padding: .5em; */
-}
-.menuBtn:hover{
-    cursor: pointer;
-    background-color: grey;
 }
 .container {
     display: flex;
