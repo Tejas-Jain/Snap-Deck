@@ -14,13 +14,12 @@
     align-items: center;
 }
 .menuBtn{
-    width: 72px;
-    height: 72px;
+    width: 2.5em;
     height: auto;
 }
 #notes{
-    width:100%;
-    height:100%;
+    /* width:95%;
+    height:100%; */
     font-size: 9pt;
     border-radius: 10%;
     border: 2px solid rgb(5, 99, 207);
@@ -36,20 +35,14 @@ header{
     text-align: center;
 }
 header img{
-    height: 250px;
-    width: 220px;
+    height: 200px;
+    width: 150px;
     grid-area: img;
     border: 0;
     margin: 0;
 }
 header h1{
-    color: black;
-    text-decoration: underline;
-    font-size: 3em;
-    margin-bottom: 0;
-    grid-area: h1;
-}
-header h1:hover{
+    font-family: Century;
     border-radius: 20%;
     background-color: rgb(78, 76, 76);
     color: aqua;
@@ -62,18 +55,46 @@ header h3{
 }
 .content-table{
     height: fit-content;
-    border: 2px solid black;
+    width: 60%;
+    /* border: 2px solid black; */
     padding: 0;
     display: flex;
     font-size: 1.2em;
     /* border-collapse: collapse; */
 }
 .content-table td{
-    border-radius: 5%;
+    /* border-radius: 10%; */
     border: 2px solid black;
-    padding: .5em;
+    /* padding: .5em; */
 }
 .menuBtn:hover{
     cursor: pointer;
     background-color: grey;
 }
+.container {
+    display: flex;
+    align-items: baseline;
+}
+.image-container {
+    flex:1;
+    margin-left: 40px; /* Add space between images and table container */
+    margin-right: 50px;
+  }
+.image-container img {
+    max-width: 100%; /* Ensure the images fit within the container */
+    margin-bottom: 50px; 
+    height: auto; /* Let the height adjust proportionally */
+  }
+  .table-container {
+    position: sticky;
+    top:10px;
+  }
+  h2 {
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 1000;
+    font-size: 2.1em;
+  }
+  .install-note{
+    font-size: 1.4em;
+  }
