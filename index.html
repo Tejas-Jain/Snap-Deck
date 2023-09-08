@@ -2,14 +2,21 @@
 <html>
 <title>Snap-Desk Demo Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/png" href="./logo/logo128.png">
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<link rel="icon" type="image/png" href="./core/logo/logo128.png">
+
+<!-- Connecting stylesheet of the core -->
+<link rel="stylesheet" href="./core/SideBar/w3.css">
+<link rel="stylesheet" href="./core/SideBar/style.css">
+<link rel="stylesheet" href="./core/SideBar/font-awesome.css">
+
+<!-- Connecting scripts from the core -->
+<script defer src="./core/SideBar/dist/html2pdf.bundle.min.js"></script>
+<script defer src="./core/SideBar/script.js"></script>
+
+
 <link rel="stylesheet" href="./style.css">
-<script defer src="./dist/html2pdf.bundle.js"></script>
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
-<script defer src="./script.js"></script>
-<body>
+
+<body class="w3-sidebar">
     <header>
         <img src="./logoWithTitle.png" alt="Snap-Desk Logo">
         <a style="color: rgb(2, 150, 150)" href="https://microsoftedge.microsoft.com/addons/Microsoft-Edge-Extensions-Home"><h1>SNAP-DESK</h1>(Demo Website Only. Click Here to Download Free Extension)</a> 
@@ -18,13 +25,13 @@
             <span style="color: rgb(1, 92, 92)" >Just</span> ScreenShot It!!!
         </h3>
     </header>
-    <table class="content-table">
+    <table class="content-table" id="main-table">
         <tr>
-            <td><a id="startBtn" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/Media-record-cropped.svg" alt=""></a></td>
+            <td><a id="startBtn" class="w3-bar-item w3-button" href="#main-table"><img class="menuBtn" src="./core/MenuLogos/Media-record-cropped.svg" alt=""></a></td>
             <td>Press To Start/Stop Monitoring the Screen.</td>
         </tr>
         <tr>
-            <td><a id="captureBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a></td>
+            <td><a id="captureBtn"  href="#main-table" class="w3-bar-item w3-button"><img class="menuBtn" src="./core/MenuLogos/screenshot-one-svgrepo-com.svg" alt=""></a></td>
             <td>Press To Capture Screen.</td>
         </tr>
         <tr>
@@ -32,7 +39,7 @@
             <td>Type Notes for the Current Screen.</td>
         </tr>
         <tr>
-            <td rowspan="2"><a id="pipBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/picture-size-svgrepo-com.svg" alt=""></a></td>
+            <td rowspan="2"><a id="pipBtn"  href="#main-table" class="w3-bar-item w3-button"><img class="menuBtn" src="./core/MenuLogos/picture-size-svgrepo-com.svg" alt=""></a></td>
             <td>Press To View Screen in Picture-In-Picture(Small Screen) Mode.</td>
         </tr>
         <tr>
@@ -41,11 +48,12 @@
             </td>
         </tr>
         <tr>
-            <td><a id="saveBtn" href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="./MenuLogos/download-svgrepo-com.svg" alt=""></a></td>
+            <td><a id="saveBtn"  href="#main-table" class="w3-bar-item w3-button"><img class="menuBtn" src="./core/MenuLogos/download-svgrepo-com.svg" alt=""></a></td>
             <td>Press to Download and Save the Cuptured Screens.</td>
         </tr>
+        <tr><td id="output2"></td><td>To Show and Edit the Pages.</td> </tr>
     </table>
-    <!-- <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="../MenuLogos/edit-table-svgrepo-com.svg" alt=""></a> -->
+    <!-- <a href="#" class="w3-bar-item w3-button"><img class="menuBtn" src="../core/MenuLogos/edit-table-svgrepo-com.svg" alt=""></a> -->
 </body>
 
 </html>
