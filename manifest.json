@@ -4,11 +4,11 @@
     "manifest_version": 3,
     "description": "A powerful extension to capture screenshots of any desktop window or browser tab, Add text notes, and Save them as PDF files.",
     "icons": {
-        "128": "/logo/logo128.png"
+        "128": "./core/logo/logo128.png"
     },
     "web_accessible_resources": [
         {
-          "resources": [ "/SideBar/SideBar.html" ],
+          "resources": [ "/core/SideBar/SideBar.html" ],
           "matches": ["*://*/*"]
         }
     ],
