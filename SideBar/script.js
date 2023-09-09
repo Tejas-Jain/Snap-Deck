@@ -188,6 +188,13 @@ function takePicture() {
 
 
     window.top.postMessage('ShowSnapdeskExtensionBox', '*');
+
+    //Code to Scroll down to the bottom of the notes.
+    setTimeout(()=>{
+      console.log(output2.scrollHeight);
+      output2.scrollTop = output2.scrollHeight
+    }, 400);
+    
   }, 500);
 }
 
