@@ -1,4 +1,6 @@
 .w3-sidebar{
+    /* background: #F5F5F5; */
+    background-color: #d3d5d5bf;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -30,12 +32,14 @@ header h1{
     color: aqua;
 }
 header h3{
+    font-family: Century;
     font-size: 1.8em;
     margin-top: 0;
     grid-area: h3;
     font-style: italic;
 }
 .content-table{
+    background: linear-gradient(to right, #bdc3c763, #4e667fab);
     height: fit-content;
     width: 60%;
     /* border: 2px solid black; */
@@ -45,6 +49,8 @@ header h3{
     /* border-collapse: collapse; */
 }
 .content-table td{
+    text-align: center;
+    vertical-align: middle;
     /* border-radius: 10%; */
     border: 2px solid black;
     /* padding: .5em; */
