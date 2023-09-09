@@ -66,7 +66,7 @@ pipBtn.addEventListener('click', () => {
     document.exitPictureInPicture();
   else if (document.pictureInPictureEnabled && video){
     if(!video.srcObject){
-      alert(" Select the screen using \"Red Button\" ");
+      alert("Select the screen using \"First Button\" ");
       return;
     }
     video.requestPictureInPicture()
@@ -106,7 +106,7 @@ function savepdf() {
     saved = true;
   }
   else
-    alert("Nothing to save. Please Try Capturing Something!!!");
+    alert("Nothing to save. Please Try Capturing Something First!!!");
 }
 
 
@@ -116,7 +116,7 @@ document.getElementById('captureBtn').addEventListener('click', takePicture, fal
 //Take Picture Function to take a picture at from the current displayed screen
 function takePicture() {
   if(!video.srcObject){
-    alert("First select the screen");
+    alert("Select the screen!!!");
     setTimeout(() => {
       startup();
     }, 500);
