@@ -13,9 +13,20 @@ iframe.style.top = "0px";
 iframe.style.right = "0px";
 iframe.style.zIndex = "999999999999";
 iframe.style.border = "none"; 
+iframe.style.opacity = 1;
+iframe.style.onHover
+iframe.addEventListener('mouseover', ()=>{
+    iframe.style.opacity = 1;
+});
+iframe.addEventListener('mouseleave', ()=>{
+    iframe.style.opacity = 0.5;
+})
+
 iframe.allow= "display-capture;";
 iframe.src = chrome.runtime.getURL("./core/SideBar/SideBar.html");
 document.body.appendChild(iframe);
+
+//Communication with the extension.
 window.onmessage = function(event){
     if (event.data == 'HideSnapdeskExtensioBox') {
         iframe.style.zIndex = "-1000";
