@@ -8,6 +8,10 @@
     height: 100%;
     overflow: scroll;
 }
+#output2{
+  max-height: 150px;
+}
+
 header{
     font-family: Century;
     display: grid;
@@ -39,9 +43,9 @@ header h3{
     font-style: italic;
 }
 .content-table{
-    background: linear-gradient(to right, #bdc3c763, #4e667fab);
     height: fit-content;
     width: 60%;
+    border-radius: 10px;
     /* border: 2px solid black; */
     padding: 0;
     display: flex;
@@ -49,12 +53,32 @@ header h3{
     /* border-collapse: collapse; */
 }
 .content-table td{
-    text-align: center;
+  
+    background: linear-gradient(to right, #bdc3c763, #4e667f60);
+    /* text-align: center; */
     vertical-align: middle;
-    /* border-radius: 10%; */
-    border: 2px solid black;
+    border-radius: 10px;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    border-bottom: 6px solid black;
+    border-right: 4px solid black;
+    padding: 0;
+    padding-left: 0.5em;
+    margin-bottom: 100px;
     /* padding: .5em; */
 }
+table {
+  border-collapse: separate;
+  border-spacing: 5px 10px;
+}
+table tr td:first-child:hover{
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+#pipBtn{
+  padding: 20px 16px 30px 16px;
+}
+
 .container {
     display: flex;
     align-items: baseline;
