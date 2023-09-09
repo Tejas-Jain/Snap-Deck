@@ -163,6 +163,7 @@ function takePicture() {
             cross.innerHTML = '&cross;';
         h1.appendChild(cross); //Adding Cross to h1
     h1.style = `
+      font-weight: bolder;
       margin-bottom: 0; 
       padding-bottom: 0; 
       border-bottom: 0;
