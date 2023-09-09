@@ -6,10 +6,10 @@ chrome.runtime.onMessage.addListener(function(msg, sender){
 // console.log("Inside Content Script");  For checking the basic working of extension and background script
 var iframe = document.createElement('iframe'); 
 iframe.style.minWidth = 0;
-iframe.style.height = "100%";
+iframe.style.height = "587px";
 iframe.style.width = "0px";
 iframe.style.position = "fixed";
-iframe.style.top = "5px";
+iframe.style.top = "0px";
 iframe.style.right = "0px";
 iframe.style.zIndex = "999999999999";
 iframe.style.border = "none"; 
