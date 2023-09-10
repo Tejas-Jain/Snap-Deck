@@ -5,8 +5,9 @@ chrome.runtime.onMessage.addListener(function(msg, sender){
 })
 // console.log("Inside Content Script");  For checking the basic working of extension and background script
 var iframe = document.createElement('iframe'); 
+iframe.style.borderRadius = "0 0 0 15px";
 iframe.style.minWidth = 0;
-iframe.style.height = "587px";
+iframe.style.height = "362px";
 iframe.style.width = "0px";
 iframe.style.position = "fixed";
 iframe.style.top = "0px";
@@ -31,18 +32,23 @@ document.body.appendChild(iframe);
 
 //Communication with the extension.
 window.onmessage = function(event){
-    if (event.data == 'HideSnapdeskExtensioBox') {
-        iframe.style.zIndex = "-1000";
-        iframe.style.display = "none";
+    console.log(event.data);
+    var message = event.data.message;
+    if (message == 'HideSnapdeskExtensioBox') {
+        // iframe.style.zIndex = "-1000";
+        // iframe.style.display = "none";
+        iframe.style.width = "0px";
     }
-    else if(event.data == 'ShowSnapdeskExtensionBox'){
-        iframe.style.zIndex = "999999999999";
-        iframe.style.display = "block";
+    else if(message == 'ShowSnapdeskExtensionBox'){
+        // iframe.style.zIndex = "999999999999";
+        // iframe.style.display = "block";
+        iframe.style.width = '70px'
+        iframe.style.height = event.data.height+"px";
     }
-    else if(event.data == 'exitFullScreen' && document.fullscreenElement){
+    else if(message == 'exitFullScreen' && document.fullscreenElement){
         document.exitFullscreen();
     }
-    else if(event.data == 'Play_Root_Video'){
+    else if(message == 'Play_Root_Video'){
         console.log("Received Message Play_Root_Video Message Listener");
         var vidElement = document.querySelector("video");
         vidElement.play();
