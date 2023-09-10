@@ -11,13 +11,14 @@ var output2 = document.getElementById('output2');
 var textBox = document.getElementById('notes');
 var count = 0;
 var saved = false;
+var sidebar = document.getElementsByClassName('w3-sidebar')[0];
 
 video.addEventListener('pause', ()=>{
   if(document.pictureInPictureElement)
     takePicture();
   video.play();
-  window.top.postMessage('Play_Root_Video', '*');
-  console.log("Posted a Message to Play Root Video");
+  window.top.postMessage( {message: 'Play_Root_Video'}, '*');
+  // console.log("Posted a Message to Play Root Video");
 });
 
 //Prompt for accident reload of screen
@@ -36,7 +37,7 @@ window.addEventListener("beforeunload", function(event) {
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', () => {
   if (!video.srcObject){
-    window.top.postMessage('exitFullScreen', '*');
+    window.top.postMessage( { message: 'exitFullScreen'}, '*');
     setTimeout(() => {
       startup();
     }, 500);
@@ -122,7 +123,7 @@ function takePicture() {
     }, 500);
     return;
   }
-  window.top.postMessage('HideSnapdeskExtensioBox', '*');
+  window.top.postMessage( { message: 'HideSnapdeskExtensioBox'}, '*');
   //After lot of hit and trial and hours of research of hiding the box while capturing the screen, I found that the video is lagging behind the screen capture which causes the "Hidden Body"  to remain visible even after having everything else in the Synchronous mode.
   //So I added a delay of 400ms to capture the screen after the video has been loaded.
   setTimeout(() => {  //To Account for Video Lag while Capturing
@@ -186,12 +187,12 @@ function takePicture() {
     extraDiv.appendChild(canvas2);
     output2.appendChild(extraDiv);
 
-
-    window.top.postMessage('ShowSnapdeskExtensionBox', '*');
-
+    
+    window.top.postMessage({ message: 'ShowSnapdeskExtensionBox', height: sidebar.clientHeight}, '*');
+    
     //Code to Scroll down to the bottom of the notes.
     setTimeout(()=>{
-      console.log(output2.scrollHeight);
+      // console.log(output2.scrollHeight);
       output2.scrollTop = output2.scrollHeight
     }, 400);
     
@@ -207,7 +208,7 @@ function removePage(e) {
 }
 
 async function startup() {
-  window.top.postMessage('HideSnapdeskExtensioBox', '*');
+  window.top.postMessage({message: 'HideSnapdeskExtensioBox'}, '*');
   const displayMediaOptions = {
     video: true,
     audio: false,
@@ -224,5 +225,5 @@ async function startup() {
     .catch((err) => {
       console.log("An error occurred: " + err);
     });
-  window.top.postMessage('ShowSnapdeskExtensionBox', '*');
+  window.top.postMessage( { message: 'ShowSnapdeskExtensionBox', height: sidebar.clientHeight}, '*');
 }
