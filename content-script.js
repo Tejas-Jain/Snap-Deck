@@ -14,7 +14,10 @@ iframe.style.right = "0px";
 iframe.style.zIndex = "999999999999";
 iframe.style.border = "none"; 
 iframe.style.opacity = 1;
-iframe.style.onHover
+
+iframe.style.visibility = "visible";
+// iframe.style.cssText = "visibility: visible!important;"; //Use in case the visiblity is over-ridden by the source site.
+
 iframe.addEventListener('mouseover', ()=>{
     iframe.style.opacity = 1;
 });
