@@ -2,3 +2,7 @@
 	path = demo
 	url = git@github.com:Tejas-Jain/Snap-Deck.git
 	branch = demo
+[submodule "docs"]
+	path = docs
+	url = git@github.com:Tejas-Jain/docs.git
+	branch = snapdesk
