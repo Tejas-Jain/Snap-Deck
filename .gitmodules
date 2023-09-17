@@ -6,3 +6,7 @@
 	path = docs
 	url = git@github.com:Tejas-Jain/docs.git
 	branch = snapdesk
+[submodule "core"]
+	path = core
+	url = git@github.com:Tejas-Jain/Snap-Deck.git
+	branch = core
